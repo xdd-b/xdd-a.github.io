@@ -445,3 +445,18 @@ class Child extends Parent {
 ##  instanceof typeof 有什麼區別
 - instanceof 只能比较对象，判断依据是原型链查找
 - typeof 将 `null`、`Object`、`Array`、`promise`等都看做 `object`
+
+## 跨域 cookie 失效的原因与解决办法
+- 浏览器同源策略中提到了 每个源都有自己独立的存储空间，所以他们之间不能互相读写。
+- 我们可以通过 `Access-Control-Allow-Credentials` 请求头进行配置。
+```js
+/** 
+ * fetch 的解决办法
+ */
+credentials: "include" // 告知浏览器可以将cookie暴露给前端。
+
+/**
+ * Xhr 的解决办法
+ */
+XMLHttpRequest.withCredentials:true
+```
